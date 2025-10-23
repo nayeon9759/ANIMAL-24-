@@ -122,8 +122,8 @@ body{
 .required{color:var(--primary)}
 
 .options.inline label{margin-right:16px}
-.options.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.options label{display:flex;align-items:center;padding:8px;border-radius:6px;background:var(--card);cursor:pointer;transition:0.2s;border:1px solid rgba(255,255,255,0.1)}
+.options.grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.options label{display:flex;align-items:center;padding:6px;border-radius:6px;background:var(--card);cursor:pointer;transition:0.2s;border:1px solid rgba(255,255,255,0.1)}
 .options input{margin-right:6px}
 
 /* 입력 필드 색상 명확화 */
