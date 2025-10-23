@@ -118,7 +118,7 @@ body{
   border:1px solid rgba(255,255,255,0.1)
 }
 /* 질문 텍스트 아래 간격 유지 */
-.q{font-weight:700;margin-bottom:15px}
+.q{font-weight:700;margin-bottom:8px}
 .required{color:var(--primary)}
 
 .options.inline label{margin-right:16px}
