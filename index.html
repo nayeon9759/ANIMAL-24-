@@ -1,0 +1,157 @@
+<!doctype html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2025 by nayeon9759 (http://jsbin.com/xotodom/6/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html lang="ko">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <title>반려동물 긴급케어 설문</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <main class="wrap">
+  <header class="hero">
+   <div class="hero-inner">
+    <h1>🐾 SOS! 24시 동물병원 </h1>
+    <p class="lead">응급 상황—우리 서비스가 진짜 도움이 되도록, 솔직한 의견을 들려주세요.</p>
+   </div>
+  </header>
+
+  <nav class="tabs">
+   <button class="tab-btn active" data-target="survey">설문 참여</button>
+   <button class="tab-btn" data-target="guide">설문 안내</button>
+   <button class="tab-btn" data-target="submissions">다른 사람 의견 보기</button>
+  </nav>
+
+    <section id="survey" class="tab-panel active panel">
+   <form id="petSurveyForm" class="survey-form" autocomplete="off">
+        <div class="form-card">
+     <label class="q">1. 반려동물 양육 경험이 있으십니까? <span class="required">*</span></label>
+     <div class="options inline">
+      <label><input type="radio" name="hasPet" value="예" required> 예</label>
+      <label><input type="radio" name="hasPet" value="아니오"> 아니오</label>
+     </div>
+    </div>
+
+      <div class="form-card">
+     <label class="q">2. 당신이 사는 지역은 어디인가요? <span class="required">*</span></label>  
+     <div class="options">
+            <label><input type="radio" name="region" value="서울" required> 서울</label> 
+      <label><input type="radio" name="region" value="경기도"> 경기도</label>
+      <label><input type="radio" name="region" value="경상도"> 경상도</label>
+      <label><input type="radio" name="region" value="기타"> 기타</label>
+      <input type="text" name="regionOther" placeholder="직접 입력" style="display:none;">
+     </div>
+     </div>
+
+        <div class="form-card">
+     <label class="q">3. 평소 동물병원 선택 시 가장 우선시하는 기준은 무엇인가요? <span class="required">*</span></label>
+     <select name="priorityCriteria" required>
+      <option value="">선택하세요</option>
+      <option value="비용">비용</option>
+      <option value="직원의 친절도">직원의 친절도</option>
+      <option value="거리">거리</option>
+      <option value="병원의 평판">병원의 평판</option>
+      <option value="의료진의 전문성 및 경험">의료진의 전문성 및 경험</option>
+     </select>
+    </div>
+
+        <div class="form-card">
+     <label class="q">4. 응급 상황에서 우려되는 점과, 필요한 서비스 기능은 무엇인가요?" <span class="required">*</span></label>
+     <textarea name="concernAndFeature" rows="5" placeholder="예: 야간 응급비용이 불투명 → 가격 투명성 & 예상비용 계산 기능" required></textarea>
+    </div>
+
+        <div class="form-card">
+     <label class="q">5. 응급 상황 시 병원 정보에서 '가장 중요한 정보(1순위)'와 '두 번째로 중요한 정보(2순위)'를 선택해주세요. <span class="required">*</span></label>
+     <div class="priority-grid">
+      <div>
+       <label class="small">1순위</label>
+       <select name="priority1" required>
+        <option value="">선택</option>
+        <option value="현재 운영 여부">A. 현재 운영 여부</option>
+        <option value="주차 가능 여부">B. 주차 가능 여부</option>
+        <option value="주요 진료 과목">C. 주요 진료 과목</option>
+       </select>
+      </div>
+      <div>
+       <label class="small">2순위</label>
+       <select name="priority2" required>
+        <option value="">선택</option>
+        <option value="현재 운영 여부">A. 현재 운영 여부</option>
+        <option value="주차 가능 여부">B. 주차 가능 여부</option>
+        <option value="주요 진료 과목">C. 주요 진료 과목</option>
+       </select>
+      </div>
+     </div>
+    </div>
+
+        <div class="form-card">
+     <label class="q">6. 반려동물 응급 시 최대 지불 의향 금액 범위는? <span class="required">*</span></label>
+     <div class="options grid">
+      <label><input type="radio" name="priceRange" value="50만원 미만" required> A. 50만원 미만</label>
+      <label><input type="radio" name="priceRange" value="50만원 ~ 100만원"> B. 50만원 ~ 100만원</label>
+      <label><input type="radio" name="priceRange" value="100만원 ~ 200만원"> C. 100만원 ~ 200만원</label>
+      <label><input type="radio" name="priceRange" value="200만원 이상"> D. 200만원 이상</label>
+     </div>
+    </div>
+
+    <div class="form-actions">
+     <button type="submit" class="btn primary">제출하기</button>
+     <button type="reset" class="btn ghost">초기화</button>
+    </div>
+
+    <div id="msg" class="msg" aria-live="polite"></div>
+   </form>
+  </section>
+
+    <section id="guide" class="tab-panel panel">
+   <article class="guide-card">
+  <h3>설문 안내 및 참여 대상</h3>
+  <p>이 설문조사는 반려동물을 현재 키우고 계시거나, 과거 양육 경험이 있으신 분들의 소중한 의견을 듣기 위해 기획되었습니다.</p>
+  <p>혹시라도 위 조건에 해당하지 않으시는 분들은 번거로우시겠지만, 정확한 데이터 분석을 위해 지금 설문을 종료해 주시면 감사하겠습니다.</p>  
+  <p>참여해 주셔서 감사합니다!</p>
+</article>
+  </section>
+
+    <section id="submissions" class="tab-panel panel">
+   <div class="panel-head">
+    <h3>최근 제출된 의견</h3>
+   </div>
+   <div id="submissionsList" class="submissions-list">
+    <div class="placeholder">아직 제출된 기록이 없습니다.</div>
+   </div>
+
+      <div class="video-guide">
+    <h4 class="guide-title">🚨 응급 상황! 대처법 안내 (참고 영상)</h4>
+    <div class="video-container">
+          <iframe
+      width="100%"
+      height="315"
+      src="https://www.youtube.com/embed/DYZyQ-DVkvU"
+      title="반려동물 응급상황 대처방법"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+     </iframe>
+    </div>
+    <p class="video-caption">
+    긴급 상황 시 설문 응답을 기다릴 수 없는 분들을 위해, 믿을 수 있는 채널의 응급 대처 영상을 바로 제공합니다.
+    </p>
+   </div>
+     </section>
+
+  <footer class="footer">
+   <small>© 반려친구 긴급케어 · 설문용 데모 페이지</small>
+  </footer>
+ </main>
+
+ <script src="script.js"></script>
+</body>
+</html>

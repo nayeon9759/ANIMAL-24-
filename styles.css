@@ -1,0 +1,202 @@
+/* 기존 디자인 그대로 유지 */
+:root{
+ --bg:#0f1724;
+ --primary:#ff4d4f; /* 메인 색상: 붉은 계열 */
+ --accent:#ff9f43; /* 강조 색상: 주황 계열 */
+ --card:#1f2a38; /* 카드 배경색 */
+ --muted:#b9c0d7;
+ --text-main: #e6eef8; /* 명확한 메인 텍스트 색상 */
+ --highlight: #2c3a50; /* 결과 카드 하이라이트 배경색 */
+ --scrollbar-track: #1f2a38;
+ --scrollbar-thumb: #455263;
+}
+
+*{box-sizing:border-box}
+/* body에 기본 배경과 텍스트 색상 강제 적용 */
+body{
+  margin:0;
+  font-family: "Noto Sans KR", sans-serif;
+  background:var(--bg);
+  color:var(--text-main);
+  padding:20px;
+}
+.wrap{max-width:900px;margin:0 auto;border-radius:12px;background:var(--card);padding:16px;box-shadow:0 6px 20px rgba(0,0,0,0.5);}
+
+/* HERO */
+.hero{padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.hero-inner h1{margin:0;color:var(--primary)}
+.lead{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+/* TABS */
+.tabs{display:flex; gap:6px; margin:12px 0;}
+.tab-btn{flex:1;padding:8px 10px;border-radius:8px;background:var(--card);border:1px solid rgba(255,255,255,0.1);color:var(--muted);cursor:pointer;transition:0.2s}
+.tab-btn.active{background:var(--primary);color:white;box-shadow:0 4px 12px rgba(255,77,79,0.4);}
+
+/* submissions */
+.submissions-list{
+ margin-top:12px;
+ display:grid;
+ gap:10px;
+ max-height:450px;
+ overflow-y:auto;
+ padding-right:10px;
+}
+
+/* ⭐️ 스크롤바 스타일링 */
+.submissions-list::-webkit-scrollbar {
+  width: 8px;
+}
+.submissions-list::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+.submissions-list::-webkit-scrollbar-thumb {
+  background-color: var(--primary); /* 스크롤 핸들 색상을 Primary로 변경하여 간지 강조 */
+  border-radius: 10px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+/* ⭐️ 제출 결과 카드 디자인 (더욱 간결하고 강조되게 수정) */
+.record {
+  background: var(--highlight);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 77, 79, 0.2); /* 은은한 테두리 강조 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* 그림자 강조 */
+  font-size: 14px;
+}
+.record-item {
+  padding: 6px 0; /* 패딩 증가 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 항목별 구분선 강조 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 텍스트가 한 줄일 경우 중앙 정렬 */
+}
+.record-item strong {
+  color: var(--accent); /* 레이블 색상 강조 (주황색) */
+  font-weight: 700;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+.record-item span {
+  text-align: right;
+  flex-grow: 1;
+  color: var(--text-main);
+  font-weight: 500;
+}
+.record-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* ⭐️ 등장 애니메이션 효과 (Fade-in-Up) */
+@keyframes fadeInUp {
+ from {
+  opacity: 0;
+  transform: translateY(10px);
+ }
+ to {
+  opacity: 1;
+  transform: translateY(0);
+ }
+}
+.record.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.4s ease-out forwards;
+  animation-delay: var(--delay, 0s); /* JS에서 설정할 딜레이 변수 */
+}
+
+
+/* PANELS */
+.panel{display:none;padding:12px 0}
+.panel.active{display:block}
+.form-card{
+  background:rgba(255,255,255,0.05);
+  padding:12px;
+  margin-bottom:30px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.1)
+}
+/* 질문 텍스트 아래 간격 유지 */
+.q{font-weight:700;margin-bottom:15px}
+.required{color:var(--primary)}
+
+.options.inline label{margin-right:16px}
+.options.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.options label{display:flex;align-items:center;padding:8px;border-radius:6px;background:var(--card);cursor:pointer;transition:0.2s;border:1px solid rgba(255,255,255,0.1)}
+.options input{margin-right:6px}
+
+/* 입력 필드 색상 명확화 */
+select,textarea,input[type="text"]{
+  width:100%;
+  padding:8px;
+  border-radius:6px;
+  background:var(--card);
+  border:1px solid rgba(255,255,255,0.1);
+  color:var(--text-main);
+  font-size:14px;
+}
+
+/* select 옵션 색상 명확화 */
+select option {
+  background: var(--card);
+  color: var(--text-main);
+  padding: 8px;
+}
+
+/* Buttons */
+.btn{padding:8px 12px;border-radius:6px;font-weight:700;cursor:pointer;border:none;transition:0.2s}
+.btn.primary{background:var(--primary);color:white;box-shadow:0 4px 12px rgba(255,77,79,0.4);}
+.btn.primary:hover{transform:scale(1.05)}
+.btn.ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.1);}
+.btn.small{padding:4px 8px;font-size:12px}
+
+/* guide */
+.guide-card{padding:10px;background:rgba(255,255,255,0.01);border-radius:6px;border:1px solid rgba(255,255,255,0.1)}
+
+/* footer */
+.footer{margin-top:12px;text-align:center;font-size:12px;color:var(--muted)}
+
+/* YouTube 영상 섹션 */
+.video-guide{
+ margin-top: 20px;
+ padding: 16px;
+ background: rgba(255, 77, 79, 0.05);
+ border-radius: 8px;
+ border: 1px solid var(--primary);
+}
+.guide-title{
+ font-size: 16px;
+ color: var(--primary);
+ margin-top: 0;
+ margin-bottom: 12px;
+ font-weight: 700;
+}
+.video-container{
+ position: relative;
+ width: 100%;
+ padding-bottom: 50%;
+ height: 0;
+ overflow: hidden;
+ border-radius: 6px;
+}
+.video-container iframe{
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+}
+.video-caption{
+ font-size: 13px;
+ color: var(--muted);
+ margin-top: 10px;
+ text-align: center;
+}
+
+/* 차트 관련 스타일은 제거됨 */
+.charts h4{display: none;}
+.charts canvas{display: none;}
+
+
+@media(max-width:640px){.options.grid{grid-template-columns:1fr}}
